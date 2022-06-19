@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="Description" content="A site to manage students by using CRUD operations">
+<title>Students Manager</title>
+<link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.png')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+<script src="{{url_for('static', filename='js/jquery-3.5.1.min.js')}}">
+</script>
+<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}">
+</script>
+<script type="text/javascript" src="{{url_for('static', filename='js/app-controller.js')}}">
+</script>
+</head>
+<body>
+<section class="d-flex justify-content-center bg-light my-section">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="bg-primary my-brand">
+            <a class="navbar-brand text-white mx-auto pl-2 pr-2 my-brand-item" href="#">
+                <h1>Student Management</h1>
+                <h5>for success and improvement</h5>
+            </a>
+        </div>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <section class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto actions">
+                <li class="nav-item dropdown list-actions">
+                    <a class="nav-link dropdown-toggle bg-success text-white text-center anchor-actions"
+                       href="#"
+                       id="navbarDropdown"
+                       role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                        Actions
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#addStudentModal" data-toggle="modal" data-target="#addStudentModal">Add a student</a>
+                        <a class="dropdown-item" href="#updateStudentModal" data-toggle="modal" data-target="#updateStudentModal">Update a student</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#deleteStudentModal" data-toggle="modal" data-target="#deleteStudentModal">
+                            Delete a student
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 my-search">
+                <input class="form-control mr-sm-2 my-search-input" type="search" placeholder="Search by id or name, "
+                       aria-label="Search">
+            </form>
+        </section>
+    </nav>
+</section>
+<section class="container">
+    <div class="row pb-1" style="padding-left: 15px; padding-right: 15px;">
+        <div class="card">
+            <img src="{{url_for('static', filename='images/student.jpg')}}" class="card-img-top" alt="student picture">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card bg-success small-card">
+                <div class="card-body text-white">
+                    <p class="card-text">
+                    <h3>
+                        Try to
+                    </h3>
+                    <h1>
+                        Add a student
+                    </h1>
+                    </p>
+                    <p class="card-text">
+                        Increase your students amount!
+                    </p>
+                </div>
+                <button type="button" class="btn bg-success text-white font-weight-bold button-add" data-toggle="modal"
+                        data-target="#addStudentModal">
+                    Try it now
+                </button>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card bg-warning small-card">
+                <div class="card-body text-white">
+                    <p class="card-text">
+                    <h3>
+                        Any problem? then
+                    </h3>
+                    <h1>
+                        Update
+                    </h1>
+                    </p>
+                    <p class="card-text">
+                        Don't worry about mistakes, at any time you can correct the student entry
+                    </p>
+                </div>
+                <button type="button" class="btn bg-warning text-white font-weight-bold button-update"
+                        data-toggle="modal" data-target="#updateStudentModal">
+                    Try it now
+                </button>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card bg-danger small-card">
+                <div class="card-body text-white">
+                    <p class="card-text">
+                    <h3>
+                        Start again with:
+                    </h3>
+                    <h1>
+                        Delete
+                    </h1>
+                    </p>
+                    <p class="card-text">
+                        You can delete a student without any cost
+                    </p>
+                </div>
+                <button type="button" class="btn bg-danger text-white font-weight-bold button-delete"
+                        data-toggle="modal" data-target="#deleteStudentModal">
+                    Try it now
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="page-footer font-small bg-light fixed-bottom">
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright: Adel Balbisi Rojas
+    </div>
+</footer>
+<!-- Modal Add-->
+<div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formAdd" id="formAdd">
+                    <div class="form-group">
+                        <label for="registration">Registration</label>
+                        <input type="number" class="form-control" id="registration" name="registration"
+                               placeholder="Registration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email address"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dBirth">Date of Birth</label>
+                        <input type="date" class="form-control" id="dBirth" name="dBirth" placeholder="Date of birth"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hometown">Hometown</label>
+                        <input type="text" class="form-control" id="hometown" name="hometown" placeholder="Hometown"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="score">Score</label>
+                        <input type="number" class="form-control" id="score" name="score" placeholder="Score" step="0.01" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="close-add" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="submitAddForm()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Add -->
+<!-- Modal Update -->
+<div class="modal fade" id="updateStudentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-update">
+                    <div id="carousel-update" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <input id="search-upd" class="form-control mr-sm-2 input-search-update" type="search"
+                                       placeholder="Search">
+                                <div>
+                                    <div class="alert alert-primary-color-dark mb-0 mt-4 text-white d-flex justify-content-center"
+                                         role="alert">
+                                        <span>List of students</span>
+                                    </div>
+                                    <ul id="students" class="list-group">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="form-group">
+                                    <label for="registration">Registration</label>
+                                    <input type="number" class="form-control" id="upd-registration" name="registration"
+                                           placeholder="Registration" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="upd-name" name="name"
+                                           placeholder="Full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="upd-email" name="email"
+                                           placeholder="Email address"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dBirth">Date of Birth</label>
+                                    <input type="date" class="form-control" id="upd-dBirth" name="dBirth"
+                                           placeholder="Date of birth"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hometown">Hometown</label>
+                                    <input type="text" class="form-control" id="upd-hometown" name="hometown"
+                                           placeholder="Hometown"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="score">Score</label>
+                                    <input type="number" class="form-control" id="upd-score" name="score"
+                                           placeholder="Score" step="0.01" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close-update" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="onCloseUpdate()">Close
+                        </button>
+                        <button id="back-update" type="button" class="btn btn-primary" onclick="backForm()">
+                            Back
+                        </button>
+                        <button id="next-update" type="button" class="btn btn-primary" onclick="nextForm()">Next
+                        </button>
+                        <button id="btn-update" type="submit" class="btn btn-primary" onclick="submitUpdate()">Update
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Update -->
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteStudentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-delete">
+                    <input id="search-del" class="form-control mr-sm-2 input-search-update" type="search"
+                                       placeholder="Search">
+                    <div>
+                        <div class="alert alert-primary-color-dark mb-0 mt-4 text-white d-flex justify-content-center"
+                             role="alert">
+                            <span>List of students</span>
+                        </div>
+                        <ul id="students-del" class="list-group">
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close-delete" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="onCloseUpdate()">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="submitDeleteForm()">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Delete -->
+</body>
+</html>

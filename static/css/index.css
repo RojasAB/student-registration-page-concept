@@ -1,0 +1,157 @@
+@media screen and (min-width: 1200px) {
+    .my-section {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .navbar {
+        width: 71.4rem;
+    }
+
+    .my-brand {
+        position: fixed;
+        max-width: 18rem;
+        top: 0;
+        z-index: 1;
+    }
+
+    .anchor-actions {
+        height: 3.5rem;
+        width: 8rem;
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .list-actions {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+    }
+
+    .actions {
+        padding-left: 20rem;
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .my-section {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .navbar {
+        width: 60rem;
+    }
+
+    .my-brand {
+        position: fixed;
+        max-width: 18rem;
+        top: 0;
+        z-index: 1;
+    }
+
+    .anchor-actions {
+        height: 3.5rem;
+        width: 8rem;
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .list-actions {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+    }
+
+    .actions {
+        padding-left: 20rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .navbar {
+        width: 45rem;
+    }
+
+    .list-actions {
+        margin-top: 7px;
+        z-index: 0;
+        width: 100%;
+    }
+
+    .my-brand {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        margin-top: 10px;
+    }
+
+    .my-search {
+        width: 100%;
+    }
+
+    .my-search-input {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 34rem;
+    }
+}
+
+.my-brand-item {
+    white-space: normal;
+}
+
+.small-card {
+    height: 18rem;
+}
+
+.button-add {
+    background: #1E7E34 !important;
+}
+
+.button-update {
+    background: #D39E00 !important;
+}
+
+.button-delete {
+    background: #BD2130 !important;
+}
+
+body {
+    min-height: 70rem;
+}
+
+.active-search {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.alert {
+    font-size: 19px;
+}
+
+.alert-primary-color-dark {
+    background-color: #0d47a1;
+}
+
+li.active {
+    background-color: #42a5f5 !important;
+}
+
+li:hover {
+    cursor: pointer;
+}
